@@ -2,10 +2,10 @@ import useFetchData from "@/hooks/useFetchData";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import { tag, topics } from "./data";
+import { tag, topics } from "@/Components/data";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
-export default function Home() {
+const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(8);
 
@@ -224,3 +224,4 @@ export default function Home() {
     </>
   );
 }
+export default Home

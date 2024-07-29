@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { tag } from "../data";
+import { tag } from "@/Components/data";
 
 export default function TagsPage() {
   const [loading, setLoading] = useState(true);
