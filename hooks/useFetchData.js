@@ -19,6 +19,7 @@ const useFetchData = (apiEndPoint) => {
     const fetchAllData = async () => {
       try {
         const res = await axios.get(apiEndPoint);
+        console.log(res);
         const alldata = res.data;
         setAllData(alldata);
         setLoading(false); //set loading state to false after data is fetched
