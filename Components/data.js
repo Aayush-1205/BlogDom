@@ -6,7 +6,7 @@ export const topics = [
   },
   {
     topic: "React",
-    url: "react",
+    url: "reactjs",
     icon: "React.js.png",
   },
   {
@@ -121,7 +121,7 @@ export const tag = [
   },
   {
     topic: "MongoDB",
-    url: "ongodb",
+    url: "mongodb",
   },
   {
     topic: "Git",

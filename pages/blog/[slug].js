@@ -7,6 +7,7 @@ import { allyDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import remarkGfm from "remark-gfm";
 import { tag, topics } from "@/Components/data";
 import Link from "next/link";
+import Head from "next/head";
 
 export default function BlogPage() {
   const router = useRouter();
@@ -91,6 +92,13 @@ export default function BlogPage() {
 
   return (
     <>
+      <Head>
+        <title>BlogDom - {slug}</title>
+        <meta name="description" content="BlogDom by Aayush" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <div className="slugpage">
         <div className="container">
           <div className="topslug_titles">
