@@ -9,7 +9,7 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(8);
 
-  const { allData, loading } = useFetchData("/api/getBlog");
+  const { allData, loading, error } = useFetchData("/api/getBlog");
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -43,6 +43,10 @@ const Home = () => {
     const match = markdownContent.match(regex);
     return match ? match[1] : null;
   };
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <>
@@ -223,5 +227,5 @@ const Home = () => {
       </section>
     </>
   );
-}
-export default Home
+};
+export default Home;

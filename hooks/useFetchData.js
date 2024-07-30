@@ -5,6 +5,7 @@ const useFetchData = (apiEndPoint) => {
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [initialLoad, setInitialLoad] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (initialLoad) {
@@ -15,15 +16,18 @@ const useFetchData = (apiEndPoint) => {
     }
     setLoading(true);
 
-
     const fetchAllData = async () => {
       try {
-        const res = await axios.get(apiEndPoint);
+        const res = await axios.get(apiEndPoint, {
+          timeout: 10000, // set a timeout of 10 seconds
+        });
         const alldata = res.data;
         setAllData(alldata);
         setLoading(false); //set loading state to false after data is fetched
       } catch (error) {
+        setError(error);
         console.error("Error fetching blog data", error);
+      } finally {
         setLoading(false); // set loading false even if there's an error
       }
     };
@@ -34,7 +38,7 @@ const useFetchData = (apiEndPoint) => {
     }
   }, [initialLoad, apiEndPoint]);
 
-  return { allData, loading };
+  return { allData, loading, error };
 };
 
 export default useFetchData;
