@@ -8,7 +8,7 @@ const nextConfig = {
         headers: [
           {
             key: "Timeout",
-            value: "30s", // increase the timeout to 30 seconds
+            value: "1m", // increase the timeout to 30 seconds
           },
         ],
       },

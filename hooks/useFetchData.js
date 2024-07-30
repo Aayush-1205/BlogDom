@@ -10,7 +10,7 @@ const useFetchData = (apiEndPoint) => {
   const fetchAllData = async () => {
     try {
       const res = await axios.get(apiEndPoint, {
-        timeout: 10000, // set a timeout of 10 seconds
+        timeout: 100000, // set a timeout of 10 seconds
       });
       const alldata = res.data;
       setAllData(alldata);
