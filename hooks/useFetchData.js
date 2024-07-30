@@ -6,7 +6,22 @@ const useFetchData = (apiEndPoint) => {
   const [loading, setLoading] = useState(true);
   const [initialLoad, setInitialLoad] = useState(true);
   const [error, setError] = useState(null);
-
+  
+  const fetchAllData = async () => {
+    try {
+      const res = await axios.get(apiEndPoint, {
+        timeout: 10000, // set a timeout of 10 seconds
+      });
+      const alldata = res.data;
+      setAllData(alldata);
+      setLoading(false); //set loading state to false after data is fetched
+    } catch (error) {
+      setError(error);
+      console.error("Error fetching blog data", error);
+    } finally {
+      setLoading(false); // set loading false even if there's an error
+    }
+  };
   useEffect(() => {
     if (initialLoad) {
       // set initialLoad to false to prevent the api call on subsequent renders
@@ -16,21 +31,6 @@ const useFetchData = (apiEndPoint) => {
     }
     setLoading(true);
 
-    const fetchAllData = async () => {
-      try {
-        const res = await axios.get(apiEndPoint, {
-          timeout: 10000, // set a timeout of 10 seconds
-        });
-        const alldata = res.data;
-        setAllData(alldata);
-        setLoading(false); //set loading state to false after data is fetched
-      } catch (error) {
-        setError(error);
-        console.error("Error fetching blog data", error);
-      } finally {
-        setLoading(false); // set loading false even if there's an error
-      }
-    };
 
     //fetch blog data only if apiEndPoint is exits
     if (apiEndPoint) {
